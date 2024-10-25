@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>B.Laughs</title>
+     <link rel="stylesheet" href="/css/style.css">
+     <script src="https://kit.fontawesome.com/4b43be5a9c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+     <div class="container">
+          <div class="header">
+               <div class="logo">
+                    <a href="/">
+                         <span>B</span>
+                         Laughs
+                    </a>
+               </div>
+               <!-- Joke Language change function... To be implemented later  -->
+               <!-- <div class="lang">
+                    <select name="lang" id="lang">
+                         <option value="en" title="English">en</option>
+                         <option value="en" title="English">en</option>
+                         <option value="en" title="English">en</option>
+                    </select>
+               </div> -->
+               <% if(locals.siteData.safeMode) {%>
+                    <% console.log("This is site data being received",locals.siteData) %>
+                         <form action="/dark_jokes" class="mode" title="Safe Jokes" method="post">
+                              <% if(siteData.safeMode=='true' ){ %>
+                                   <input type="checkbox" name="safe" id="joke_mode" checked>
+                                   <% }else{ %>
+                                        <input type="checkbox" name="safe" id="joke_mode">
+                                        <% } %>
+                                             <input type="hidden" name="joke_mode_check" value="false" id="forJokeMode">
+                                             <label for="joke_mode">Safe Mode</label>
+                         </form>
+                         <% } %>
+          </div>
+
+          <div class="confirm_overlay d_none">
+               <div class="confirmation confirmation_1 ">
+                    <h3>
+                         Are you sure you want to disable <u>Safe Mode</u>
+                    </h3>
+                    <p class="warning">
+                         Disabling Safe mode will enable dark jokes and <abbr title="Not Safe For Work">NSFW</abbr> for
+                         some
+                         Categories
+                    </p>
+                    <p class="small">
+                         You can always enable later :p
+                    </p>
+                    <div class="button_con">
+                         <button type="button" class="cancel" id="reject_confirm">Cancel</button>
+                         <button type="submit" class="confirm" id="accept_confirm">Confirm</button>
+                    </div>
+               </div>
+               <div class="confirmation confirmation_2 d_none ">
+                    <h3>
+                         Are you sure you want to enable <u>Safe Mode</u>
+                    </h3>
+                    <p class="warning">
+                         Enabling Safe mode will disable dark jokes and <abbr title="Not Safe For Work">NSFW</abbr>
+                         jokes
+                    </p>
+                    <p class="small">
+                         You can always disable later :p
+                    </p>
+                    <div class="button_con">
+                         <button type="button" class="cancel" id="reject_confirm">Cancel</button>
+                         <button type="button" class="confirm" id="accept_confirm">Confirm</button>
+                    </div>
+               </div>
+          </div>
+          <div class="hint" title="Mouse Over box">
+               <i class="fa-solid fa-arrow-left"></i>
+
+               <!-- <p>
+                    Mouse Over(Hover) Laugh box to see Joke or over response box to see response (if any)
+               </p> -->
+          </div>
+          <div class="main">
+               <% if(locals.siteData.result) {%>
+                    <div class="joke">
+                         <div class="cover">
+                              <% if(siteData.result.joke) {%>
+                                   <h3>
+                                        <%= siteData.result.joke %>
+                                   </h3>
+                                   <% }else if(siteData.result.setup) {%>
+                                        <h3>
+                                             <%= siteData.result.setup %>
+                                        </h3>
+                                        <% }else{ %>
+                                             <h3></h3>
+                                             <% } %>
+                         </div>
+
+                    </div>
+                    <div class="response">
+                         <% if(siteData.result.delivery) {%>
+                              <%= siteData.result.delivery %>
+
+                                   <% }else{ %>
+                                        ...
+                                        <% } %>
+                    </div>
+                    <% }else{ %>
+                         <div class="joke">
+                              <div class="cover">
+                                   <h3></h3>
+                              </div>
+
+                         </div>
+                         <div class="response">
+
+                         </div>
+
+                         <% } %>
+
+
+          </div>
+          <form class="choose" method="post">
+               <button type="submit" id="programming" formaction="/programming">Programming</button>
+               <button type="submit" id="misc" formaction="/misc">Miscellaneous</button>
+               <button type="submit" id="dark" formaction="/dark" class="disabled" disabled=<%- siteData.safeMode
+                    %>>Dark</button>
+
+               <button type="submit" id="pun" formaction="/pun">Pun</button>
+               <button type="submit" id="spooky" formaction="/spooky">Spooky</button>
+               <button type="submit" id="christmas" formaction="/christmas">Christmas</button>
+          </form>
+          <div class="submit_yours">
+               <i class="fa-solid fa-question"></i>
+               <div class="title">
+                    <h5>
+                         Joke submit function
+                    </h5>
+                    <p>To be Implemented Later 😋</p>
+               </div>
+          </div>
+     </div>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+     <script src="/js/home.js"></script>
+
+</body>
+
+</html>

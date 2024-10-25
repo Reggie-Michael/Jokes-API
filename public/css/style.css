@@ -1,0 +1,431 @@
+* {
+     padding: 0;
+     margin: 0;
+     text-decoration: none;
+}
+
+.container {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     height: 100dvh;
+     background-color: #2e323b;
+     color: white;
+     align-items: center;
+     gap: 1.5rem;
+     padding-bottom: 1rem;
+     box-sizing: border-box;
+}  
+
+.container .header {
+     display: flex;
+     width: 100%;
+     height: 10vh;
+     padding: 0 5%;
+     align-items: center;
+     justify-content: space-between;
+     box-sizing: border-box;
+     box-shadow: 0 5px 2px 2px #7280a0;
+     transition: 100ms ;
+} 
+
+.container .header:hover {
+     box-shadow: 0 1px .2px .5px #7280a0, 0 -2px .2px 2px rgb(41, 49, 73);
+     margin-top: 3px;
+     translate: 0 4px;
+
+}
+
+.header .logo a {
+     font-size: 28px;
+     color: white;
+     
+     font-family: cursive;
+}
+
+.header .logo a.dark {
+     color: purple;
+}
+
+.header .logo span {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #f3eeee;
+}
+
+.header .logo span.dark {
+    color: #9c9c9c;
+}
+
+.container .header .mode{
+     opacity: 0.8;
+}
+
+.container .header .mode.disabled{
+     opacity: 1;
+}
+
+.container .header .mode label{
+     cursor: pointer;
+}
+
+.container .hint {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     /* padding: 2px 10px; */
+     position: absolute;
+     font-size: 56px;
+     top: 40%;
+     right: 30%;
+     animation: direct .5s ease-in-out infinite backwards;
+     /* background-color: #517fff44; */
+    
+}
+
+@keyframes direct {
+     from{
+          right: 30%;
+     }
+     to{
+          right: 32%;
+     }
+}
+
+.container .main {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     width: 80%;
+     height: 70dvh;
+     gap: 2%;
+     /* border: 2px solid; */
+}
+
+.container .main .joke {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background: url("/images/Icon_Light.png") no-repeat center;
+     background-size: 80%;
+     height: 80%;
+     width: 25%;
+     border: 14px solid #7280a0;
+     animation: border-reveal infinite 5s ease-in;
+     transition: 400ms ;
+     cursor: pointer;
+     font-family: cursive;
+}
+
+.container .main .joke.dark {
+     background: url("/images/dark_mode.png") no-repeat;
+     background-size: 110%;
+     background-position: 60% bottom;
+}
+
+.main .joke:hover {
+     animation: border-reveal infinite 5s ease-in, breathe infinite 1s ease-in-out;
+}
+
+.main .joke.dark:hover {
+     animation: border-reveal infinite 5s ease-in, breathe_dark infinite .4s ease-in-out;
+}
+
+@keyframes breathe {
+     0%,100% {
+          background-size: 80%;
+          
+     }
+     50% {
+          background-size: 90%;
+     }
+}
+
+@keyframes breathe_dark {
+     0%,100% {
+          background-size: 110%;
+          
+     }
+     50% {
+          background-size: 120%;
+     }
+}
+
+
+.main .joke .cover {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background: #2e323b62;
+     height: 100%;
+     width: 100%;
+     padding: 1rem;
+     box-sizing: border-box;
+     overflow: auto;
+}
+
+.main .joke .cover h3 {
+     /* border: 2px solid; */
+     
+     /* animation: showText 5s ease forwards; */
+     overflow: hidden;
+     text-align: center;
+     /* scale: 0; */
+     opacity: 0;
+
+}
+
+.main .joke .cover h3.show {
+     animation: showText 2s ease forwards;
+     scale: 0;
+}
+
+.main .joke .cover h3.fade {
+     
+     animation: fadeText 1s ease forwards;
+}
+
+@keyframes showText {
+    from{
+     scale: 0;
+     opacity: 0;
+    }
+    to{
+     opacity: 1;
+     scale: 1;
+    }
+}
+
+@keyframes fadeText {
+    from{
+     opacity: 1;
+    }
+    to{
+     opacity: 0;
+    }
+}
+
+.main .response {
+     border: 2px solid;
+     padding: 1rem;
+     font-family: serif;
+     border-radius: 10px ;
+     background-color: #255ad615;
+     transition: 600ms all ease;
+     font-family: 'Caveat', cursive;
+     opacity: 0.8;
+     color: #ffffff1f;
+     min-width: 20%;
+}
+
+.main .response:hover {
+     scale: 1.1;
+     opacity: 1;
+     color: #fff;
+
+
+}
+
+
+@keyframes border-reveal {
+   
+     0%, 
+     100% {
+     
+         
+         border-left-color: #6688df;
+     }
+     
+     5% {
+         
+         border-left-color: #6688df;
+     }
+     
+     30% {
+         
+         border-top-color: #6688df;
+         border-left-color: #7280a0;
+     }
+     
+     60% {
+         
+         border-right-color: #6688df;
+         border-left-color: #7280a0;
+         border-top-color: #7280a0;
+     }
+     
+     80% {
+          border-bottom-color: #6688df;
+          border-left-color: #7280a0;
+          border-right-color: #7280a0;
+          border-top-color: #7280a0;
+     }
+ 
+ }
+
+.container .choose {
+     width: 50%;
+     display: grid;
+     height: 12dvh;
+     grid-template-columns: repeat(5, 1fr);
+     gap: 1rem ;
+}
+
+.container .choose button {
+     background-color: #517fff;
+     cursor: pointer;
+     color: white;
+     opacity: 0.9;
+
+}
+
+
+.container .choose button:hover {
+     opacity: 0.7;
+}
+
+.container .choose button:active {
+     opacity: 1;
+}
+
+
+.container .choose button.disabled {
+     opacity: 0.2;
+
+}
+
+.container .choose button#christmas {
+     grid-column: 3/4;
+}
+
+.confirm_overlay {
+     display: flex;
+     position: absolute;
+     width: 100%;
+     height: 100dvh;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+     background-color: #1a29529f;
+     z-index: 999;
+}
+
+.confirm_overlay .confirmation {
+     display: flex;
+     flex-direction: column;
+     width: 30%;
+     height: 20dvh;
+     align-items: center;
+     justify-content: center;
+     background-color: white;
+     color: #33375c;
+     gap: 1.5rem;
+     box-shadow: 0 0 2px 4px rgba(192, 192, 192, 0.644);
+     padding: 1rem .5rem .5rem;
+}
+
+.confirm_overlay .confirmation h3{
+     font-size: 25px;
+}
+
+.confirm_overlay .confirmation p.warning{
+     font-size: 14px;
+     opacity: 0.9;
+}
+
+.confirm_overlay .confirmation p.small{
+     font-size: 12px;
+     color: rgba(128, 128, 128, 0.644);
+
+}
+
+.confirm_overlay .confirmation .button_con{
+     display: flex;
+     gap: 2rem;
+
+}
+
+.confirmation .button_con button {
+     padding: 9px;
+     border-radius: 4px;
+     border: none;
+     cursor: pointer;
+     color: white;
+     box-shadow: 0 5px 2px 1px rgba(0, 0, 0, 0.26);
+     transition: 300ms all ease;
+     opacity: 0.7;
+
+}
+
+
+.button_con button.cancel {
+     background-color: rgb(145, 0, 0)
+}
+
+.button_con button.confirm {
+     background-color: rgb(7, 134, 7);
+}
+
+
+.confirmation .button_con button:hover {
+     opacity: 1;
+}
+
+.confirmation .button_con button:active {
+     box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.26);
+     translate: 0 4px;
+     transition: 100ms;
+}
+
+
+
+.container .submit_yours {
+     display: flex;
+     width: 50px;
+     height: 50px;
+     align-items: center;
+     justify-content: center;
+     position: absolute;
+     border-radius: 50%;
+     font-size: 16px;
+     background-color: rgba(168, 168, 168, 0.514);
+     bottom: 10px;
+     right: 10px;
+     opacity: 0.8;
+
+
+}
+
+.container .submit_yours:hover {
+     opacity: 0.9;
+}
+
+.container .submit_yours .title {
+     display: none;
+     flex-direction: column;
+     position: absolute;
+     width: 200px;
+     height: 70px;
+     background-color: rgba(230, 234, 255, 0.432);
+     align-items: center;
+     justify-content: space-evenly;
+     gap: 1rem;
+     box-shadow: 0 0 2px 5px rgba(0, 0, 0, 0.308);
+     bottom: 40px;
+     right: 50px;
+
+}
+
+.submit_yours:hover .title {
+     display: flex;
+}
+
+
+
+.d_none {
+     display: none !important;
+}
+
+
+
